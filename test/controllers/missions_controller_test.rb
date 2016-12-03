@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class MissionsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @mission = missions(:one)
+    sign_in users(:test_user)
   end
 
   test "should get index" do

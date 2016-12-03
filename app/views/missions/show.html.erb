@@ -22,7 +22,7 @@
 
 <p>
   <strong>Created by:</strong>
-  <%= @mission.user.email %>
+  <%= @mission.user.try(:email) %>
 </p>
 
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
