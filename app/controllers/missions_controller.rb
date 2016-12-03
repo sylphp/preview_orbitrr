@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /missions
   # GET /missions.json
@@ -14,7 +15,7 @@ class MissionsController < ApplicationController
 
   # GET /missions/new
   def new
-    @mission = Mission.new
+    @mission = current_user.missions.build
   end
 
   # GET /missions/1/edit
@@ -24,7 +25,7 @@ class MissionsController < ApplicationController
   # POST /missions
   # POST /missions.json
   def create
-    @mission = Mission.new(mission_params)
+    @mission = current_user.missions.build(mission_params)
 
     respond_to do |format|
       if @mission.save
