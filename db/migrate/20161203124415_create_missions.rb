@@ -4,7 +4,7 @@ class CreateMissions < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.text :requirements
-      t.decimal :budget
+      t.decimal :budget, precision: 8, scale: 2
 
       t.timestamps
     end
