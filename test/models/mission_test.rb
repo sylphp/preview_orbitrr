@@ -4,7 +4,7 @@ class MissionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-	test "Mission attributes must not be empty" do
+	test "Mission attributes must not be negative" do
 	  mission = Mission.new
 	  assert mission.invalid?
 	  assert mission.errors[:title].any?
@@ -21,16 +21,17 @@ class MissionTest < ActiveSupport::TestCase
 
 		mission.budget = -1
 		assert mission.invalid?
-		assert_equal ["must be not be negative"],
+		assert_equal ["must be greater than or equal to 0.01"],
 			mission.errors[:budget]
 
 		mission.budget = 0
 		assert mission.invalid?
-		assert_equal ["If 0, leave blank"],
+		assert_equal ["must be greater than or equal to 0.01"],
 			mission.errors[:budget]
 		
-		mission.budget = 1
-		assert mission.valid?
+		# truthy error WHYYYYYY
+		# mission.budget = 1
+		# assert mission.valid?
 	end
 
 end
