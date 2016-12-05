@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :submissions
   resources :missions
   root 'landingpage#index', as: 'landingpage_index'
 
