@@ -1,6 +1,7 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :not_authorized, only: [:edit, :update, :destroy]
 
   # GET /missions
   # GET /missions.json
@@ -72,4 +73,12 @@ class MissionsController < ApplicationController
     def mission_params
       params.require(:mission).permit(:title, :description, :requirements, :budget)
     end
+
+    def not_authorized
+      unless helpers.is_mission_owner
+        flash[:notice] = "You are not authorized to do that"
+        redirect_to missions_url
+      end
+    end
+
 end

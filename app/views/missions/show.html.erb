@@ -25,5 +25,7 @@
   <%= @mission.user.try(:email) %>
 </p>
 
+<%= is_mission_owner %>
+
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
 <%= link_to 'Back', missions_path %>
