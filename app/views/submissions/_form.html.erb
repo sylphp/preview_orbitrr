@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -25,6 +25,8 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
+
+    <%= f.hidden_field :mission_id, :value => params[:mission_id] %>
 
   <div class="actions">
     <%= f.submit %>

@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Submission for:</strong>
+  <%= @submission.mission.title %>
+</p>
+
+
+<p>
   <strong>Title:</strong>
   <%= @submission.title %>
 </p>
@@ -14,6 +20,13 @@
   <strong>Price:</strong>
   <%= @submission.price %>
 </p>
+
+<p>
+  <strong>Submission by:</strong>
+  <%= @submission.user.email %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>
