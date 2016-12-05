@@ -27,5 +27,5 @@
 
 <%= is_mission_owner %>
 
-<%= link_to 'Edit', edit_mission_path(@mission) %> |
+<%= link_to 'Edit', edit_mission_path(@mission) if is_mission_owner %> |
 <%= link_to 'Back', missions_path %>

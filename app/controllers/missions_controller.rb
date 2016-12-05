@@ -76,7 +76,7 @@ class MissionsController < ApplicationController
 
     def not_authorized
       unless helpers.is_mission_owner
-        flash[:notice] = "You are not authorized to do that"
+        flash[:alert] = "You are not authorized to do that"
         redirect_to missions_url
       end
     end
