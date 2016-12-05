@@ -15,7 +15,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    # Get Mission details from params url
+    # Get Mission details from params url to be shown in new_submission_url/path
     @mission = Mission.find(params[:mission_id])
     @submission = current_user.submissions.build
   end
