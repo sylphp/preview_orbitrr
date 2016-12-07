@@ -7,6 +7,7 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
     @mission = missions(:one_mission_by_user1)
     @mission2 = missions(:two_mission_by_user2)
     @submission = submissions(:one_submission_by_user1_mission1)
+    @submission2 = submissions(:two_submission_by_user2_mission2)
     sign_in users(:test_user1)
   end
 
@@ -80,6 +81,31 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to submissions_url
   end
 
-  
+  # AUTHORIZATION TESTS
+
+  test "should get edit but redirected because not owner" do
+    get edit_submission_url(@submission2)
+    assert_response :redirect
+  end
+
+  test "should update submission but redirected because not owner" do
+    patch submission_url(@submission2), params: { submission: {price: @submission2.price,
+                                                              story: @submission2.story,
+                                                              title: @submission2.title,
+                                                              mission_id: @submission2.mission_id }
+                                                              }
+    # assert_redirected_to submission_url(@submission)
+    assert_response :redirect
+  end
+
+  test "should destroy submission but redirected because not owner" do
+    assert_no_difference('Submission.count', -1) do
+      delete submission_url(@submission2)
+    end
+
+    # assert_redirected_to submissions_url
+    assert_response :redirect
+  end
+
 
 end
