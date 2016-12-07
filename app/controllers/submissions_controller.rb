@@ -1,7 +1,8 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :not_authorized, only: [:new, :create]
+  before_action :not_authorized_submission, only: [:new, :create]
+  before_action :not_authorized, only: [:edit, :update, :destroy]
 
   # GET /submissions
   # GET /submissions.json
@@ -78,9 +79,16 @@ class SubmissionsController < ApplicationController
       params.require(:submission).permit(:title, :story, :price, :mission_id)
     end
 
-    def not_authorized
+    def not_authorized_submission
       if helpers.owner_will_submit
         flash[:alert] = "You cannot submit on your own mission"
+        redirect_to missions_url
+      end
+    end
+
+    def not_authorized
+      unless helpers.is_submission_owner
+        flash[:alert] = "Cannot delete or edit submission that is not yours"
         redirect_to missions_url
       end
     end
