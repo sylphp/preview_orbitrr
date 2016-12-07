@@ -5,6 +5,7 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @mission = missions(:one_mission_by_user1)
+    @mission2 = missions(:two_mission_by_user2)
     sign_in users(:test_user1)
   end
 
@@ -48,4 +49,28 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to missions_url
   end
+
+
+  # AUTHORIZATION TESTS
+
+  test "should get edit but redirected because not owner" do
+    get edit_mission_url(@mission2)
+    assert_response :redirect
+  end
+
+  test "should update mission but redirected because not owner" do
+    patch mission_url(@mission2), params: { mission: { budget: @mission2.budget, description: @mission2.description, requirements: @mission2.requirements, title: @mission2.title } }
+    # assert_redirected_to mission_url(@mission)
+    assert_response :redirect
+  end
+
+  test "should destroy mission but redirected because not owner" do
+    assert_no_difference('Mission.count', -1) do
+      delete mission_url(@mission2)
+    end
+
+    # assert_redirected_to missions_url
+    assert_response :redirect
+  end
+
 end
