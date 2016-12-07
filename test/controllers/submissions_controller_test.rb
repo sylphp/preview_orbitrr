@@ -4,8 +4,8 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @mission = missions(:one)
-    @submission = submissions(:one)
+    @mission = missions(:two)
+    @submission = submissions(:two)
     sign_in users(:test_user)
   end
 
@@ -14,6 +14,7 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # should get new if owner is not the same
   test "should get new" do
     get new_submission_url, params: {mission_id: @mission.id}
     assert_response :success
@@ -21,7 +22,8 @@ class SubmissionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create submission" do
     assert_difference('Submission.count') do
-      post submissions_url, params: { submission: { price: @submission.price,
+      # added mission_id in submission url for passing params
+      post submissions_url(mission_id: 2), params: { submission: { price: @submission.price,
                                                     story: @submission.story,
                                                     title: @submission.title,
                                                     mission_id: @submission.mission_id }

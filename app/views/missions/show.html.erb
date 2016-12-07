@@ -29,5 +29,13 @@
   <h3><%= link_to 'Submit Pitch', new_submission_path(:mission_id => @mission.id) %></h3>
 </p>
 
+<p>
+  <h4> Submissions for this Mission: <%= @mission.submissions.count %></h4>
+</p>
+
+<% @mission.submissions.each do |submission| %>
+  <p><%= link_to submission.title, submission %> | <%= number_to_currency(submission.price) %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_mission_path(@mission) if is_mission_owner %> |
 <%= link_to 'Back', missions_path %>

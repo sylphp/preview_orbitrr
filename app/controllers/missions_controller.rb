@@ -75,8 +75,9 @@ class MissionsController < ApplicationController
     end
 
     def not_authorized
+      # cannot delete, edit, and update if not mission owner
       unless helpers.is_mission_owner
-        flash[:alert] = "You are not authorized to do that"
+        flash[:alert] = "Cannot delete or edit mission that is not yours"
         redirect_to missions_url
       end
     end
