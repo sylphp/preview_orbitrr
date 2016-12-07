@@ -4,8 +4,8 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @mission = missions(:one)
-    sign_in users(:test_user)
+    @mission = missions(:one_mission_by_user1)
+    sign_in users(:test_user1)
   end
 
   test "should get index" do

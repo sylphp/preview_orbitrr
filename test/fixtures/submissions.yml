@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one_submission_by_user1_mission1:
   title: MyString
   story: MyText
   price: 9.99
   mission_id: 1
   user_id: 1
 
-two:
+two_submission_by_user2_mission2:
   title: MyString
   story: MyText
   price: 9.99
