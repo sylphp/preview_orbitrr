@@ -6,7 +6,11 @@ class MissionsController < ApplicationController
   # GET /missions
   # GET /missions.json
   def index
-    @missions = Mission.all
+    @missions = Mission.all.order("created_at DESC")
+  end
+
+  def launch
+    @launch = current_user.missions.order("created_at DESC")
   end
 
   # GET /missions/1

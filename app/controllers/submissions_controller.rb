@@ -38,7 +38,7 @@ class SubmissionsController < ApplicationController
         format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
-        format.html { render :new }
+        format.html { redirect_to missions_path, notice: "there is error in submission" }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
     end
@@ -76,15 +76,17 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:title, :story, :price, :mission_id)
+      params.require(:submission).permit(:title, :story, :price, :image, :mission_id)
     end
 
+
     def not_authorized_submission
-      if helpers.owner_will_submit
+      if 0 == 1
         flash[:alert] = "You cannot submit on your own mission"
         redirect_to missions_url
       end
     end
+
 
     def not_authorized
       unless helpers.is_submission_owner

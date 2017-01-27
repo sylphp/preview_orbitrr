@@ -11,7 +11,7 @@
     </div>
   <% end %>
   
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
@@ -24,11 +24,60 @@
   <div class="field">
     <%= f.label :price %>
     <%= f.text_field :price %>
-  </div>
+  </div> -->
 
     <%= f.hidden_field :mission_id, :value => params[:mission_id] %>
 
-  <div class="actions">
+  <!-- <div class="actions">
     <%= f.submit %>
+  </div> -->
+
+
+  <div class="container-fluid">
+    <div class="post-container">
+      <div class="newsfeed-post">
+        <div class="post-box-launch">
+          <form action="#">
+            <div class="mission-title-container-list mission-title-list">
+              <h1>New Submission for <i><b><%= @mission.title %></b></i></h1>
+            </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :image, "Submission Pitch:" %>
+                <%= f.file_field :image %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :title, "Submission Title:" %>
+                <%= f.text_field :title, class: "launch-name" %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :story, "Submission Story:" %>
+                <%= f.text_area :story, :cols => "50", :rows => "5", class: "launch-name" %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :price, "Submission Price:" %>
+                <%= f.text_area :price, :cols => "50", :rows => "1", class: "launch-name" %>
+              </div>
+
+            <!-- <div class="mission-title-container-list mission-title-list">Mission Briefing: </div>
+            <textarea rows="3" cols="50" class="launch-briefing"></textarea>
+            <div class="mission-title-container-list mission-title-list">Mission Requirements: </div>
+            <textarea rows="3" cols="50" class="launch-briefing"></textarea> -->
+            
+            <br>
+            <div class="actions">
+              <%= f.submit :Submit, class: "btn btn-default2 btn-lg btn-block" %>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      <!-- </div> <a href="#" class="btn btn-default2 btn-lg">LAUNCH</a> </div> -->
+    </div>
   </div>
+  <br>
+  <br>
 <% end %>

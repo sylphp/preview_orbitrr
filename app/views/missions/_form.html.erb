@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
@@ -33,5 +33,52 @@
 
   <div class="actions">
     <%= f.submit %>
+  </div> -->
+
+  <div class="container-fluid">
+    <div class="post-container">
+      <div class="newsfeed-post">
+        <div class="post-box-launch">
+          <form action="#">
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :title, "Mission Name:" %>
+                <%= f.text_field :title, class: "launch-name" %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :description, "Mission Description:" %>
+                <%= f.text_area :description, :cols => "50", :rows => "5", class: "launch-name" %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :requirements, "Mission Requirements:" %>
+                <%= f.text_area :requirements, :cols => "50", :rows => "5", class: "launch-name" %>
+              </div>
+
+              <div class="mission-title-container-list mission-title-list">
+                <%= f.label :budget, "Mission Budget:" %>
+                <%= f.text_area :budget, :cols => "50", :rows => "1", class: "launch-name" %>
+              </div>
+
+            <!-- <div class="mission-title-container-list mission-title-list">Mission Briefing: </div>
+            <textarea rows="3" cols="50" class="launch-briefing"></textarea>
+            <div class="mission-title-container-list mission-title-list">Mission Requirements: </div>
+            <textarea rows="3" cols="50" class="launch-briefing"></textarea> -->
+            
+            <br>
+            <div class="actions">
+              <%= f.submit :Submit, class: "btn btn-default2 btn-lg btn-block" %>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      <!-- </div> <a href="#" class="btn btn-default2 btn-lg">LAUNCH</a> </div> -->
+    </div>
   </div>
+  <br>
+  <br>
+  
+
 <% end %>

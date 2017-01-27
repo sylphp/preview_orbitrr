@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @missions.each do |mission| %>
+    <% @launch.each do |mission| %>
       <tr>
         <td><%= mission.title %></td>
         <td><%= mission.description %></td>
@@ -41,13 +41,15 @@
         </form>
       </div>
 
-      <!-- <div class="launch-mission-list-container"> Got a new project?
+      <div class="launch-mission-list-container"> Got a new project?
+        <%= link_to(new_mission_path) do %>
         <button type="button" class="launch-mission-list">+ Launch a mission</button>
-      </div> -->
-      <br>
+        <% end %>
+      </div>
+
         <ul>
 
-          <% @missions.each do |mission| %>
+          <% @launch.each do |mission| %>
             <%= link_to(mission, style: "text-decoration:none") do %>
             <li>
               <div class="list-box">

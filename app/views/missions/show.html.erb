@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!-- <p>
   <strong>Title:</strong>
   <%= @mission.title %>
 </p>
@@ -39,3 +39,81 @@
 
 <%= link_to 'Edit', edit_mission_path(@mission) if is_mission_owner %> |
 <%= link_to 'Back', missions_path %>
+ -->
+
+ <div class="container-fluid">
+   <div class="post-container">
+     <div class="newsfeed-post">
+       <div class="post-box-launch">
+       <!-- <div class="col-md-8 col-md-offset-2">
+       <div class="panel panel-default" > -->
+
+            <!-- <div class="panel-heading"> -->
+             <div class="mission-title-container-list mission-desc-list">
+               Mission Name: <span class="mission-title-list"><%= @mission.title %></span>
+             </div>
+            <!-- </div> -->
+            <!-- <div class="panel-heading"> -->
+             <div class="mission-title-container-list mission-desc-list">
+               Description: <span class="mission-title-list"><%= @mission.description %></span>
+             </div>
+
+             <div class="mission-title-container-list mission-desc-list">
+               Requirements: <span class="mission-title-list"><%= @mission.requirements %></span>
+             </div>
+
+             <div class="mission-title-container-list mission-desc-list">
+               Budget: <span class="mission-title-list"><%= number_to_currency(@mission.budget) %></span>
+             </div>
+            <!-- </div> -->
+            <!-- <div class="panel-footer"> -->
+             <div class="mission-title-container-list mission-desc-list">
+               Creator: <span class="mission-title-list"><%= @mission.user.email %></span>
+             </div>
+            <!-- </div> -->
+
+        <!-- </div> -->
+        </div>
+
+        <div>
+          
+          <%= link_to 'Edit', edit_mission_path(@mission) if is_mission_owner %> |
+            <%= link_to 'Back', missions_path %>
+          <p>
+            <%= link_to(new_submission_path(:mission_id => @mission.id)) do %>
+              <button type="button" class="launch-mission-list"><h3>Submit a Pitch</h3></button>
+            <% end %>
+            
+          </p>
+
+          <p>
+            <h4> Submissions for this Mission: <%= @mission.submissions.count %></h4>
+          </p>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+          <div class="col-md-12">
+          <% @mission.submissions.each do |submission| %>
+            
+              <div class="panel panel-default col-md-4">
+                <div class="panel-heading">
+                  <%= image_tag submission.image.url(:medium), class: "img-responsive center-block" %>
+                </div>
+                <div class="panel-body">
+                  <p><%= link_to submission.title, submission %> | <%= number_to_currency(submission.price) %></p>
+                </div>
+              </div>
+
+
+
+          <% end %>
+
+          </div>
+          <br>orbitrr.com
+          <br>we.orbitrr IG
+          <br>orbitrr FB
+          <br>we.orbitrr@orbitrr.com
+  
